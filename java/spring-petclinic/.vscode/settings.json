@@ -1,0 +1,31 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.debug.settings.enableRunDebugCodeLens": true,
+    "java.inlayHints.parameterNames.enabled": "all",
+    "java.test.config": {
+        "workingDirectory": "${workspaceFolder}"
+    },
+    "maven.executable.path": "./mvnw",
+    "spring-boot.ls.checkjvm": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/target": false,
+        "**/.gradle": true,
+        "**/build": true
+    },
+    "files.associations": {
+        "*.properties": "spring-boot-properties",
+        "*.yml": "spring-boot-properties-yaml",
+        "*.yaml": "spring-boot-properties-yaml"
+    },
+    "java.saveActions.organizeImports": true,
+    "java.format.settings.url": "https://raw.githubusercontent.com/spring-projects/spring-framework/main/src/eclipse/org.springframework.ide.eclipse.core.prefs",
+    "java.format.settings.profile": "Spring",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    }
+}

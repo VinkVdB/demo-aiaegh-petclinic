@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot Launch (localhost:8080)",
+            "request": "launch",
+            "mainClass": "org.springframework.samples.petclinic.PetClinicApplication",
+            "projectName": "spring-petclinic",
+            "args": "",
+            "vmArgs": "-Dspring.profiles.active=dev",
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot Launch (Debug Mode)",
+            "request": "launch",
+            "mainClass": "org.springframework.samples.petclinic.PetClinicApplication",
+            "projectName": "spring-petclinic",
+            "args": "",
+            "vmArgs": "-Dspring.profiles.active=dev -Dspring.devtools.restart.enabled=true -Dlogging.level.org.springframework.samples.petclinic=DEBUG",
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "java",
+            "name": "Run All Tests",
+            "request": "launch",
+            "mainClass": "",
+            "projectName": "spring-petclinic",
+            "preLaunchTask": "Maven: Test",
+            "console": "internalConsole"
+        }
+    ]
+}

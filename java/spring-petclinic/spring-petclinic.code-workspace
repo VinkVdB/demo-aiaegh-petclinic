@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"name": "Spring PetClinic",
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive",
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.debug.settings.enableRunDebugCodeLens": true,
+		"java.inlayHints.parameterNames.enabled": "all",
+		"spring-boot.ls.checkjvm": false,
+		"files.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true,
+			"**/node_modules": true,
+			"**/target": false
+		},
+		"java.test.config": {
+			"workingDirectory": "${workspaceFolder}"
+		},
+		"maven.executable.path": "./mvnw"
+	},
+	"extensions": {
+		"recommendations": [
+			"vscjava.vscode-java-pack",
+			"vmware.vscode-boot-dev-pack",
+			"vscjava.vscode-maven",
+			"gabrielbb.vscode-lombok"
+		]
+	}
+}
