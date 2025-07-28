@@ -1,0 +1,58 @@
+@model PetClinic.Models.Visit
+
+@{
+    ViewData["Title"] = "Add Visit";
+    var pet = ViewBag.Pet as PetClinic.Models.Pet;
+}
+
+<h2>New Visit</h2>
+
+<b>Pet</b>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th>Type</th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@pet?.Name</td>
+            <td>@pet?.BirthDate.ToString()</td>
+            <td>@pet?.Type?.Name</td>
+            <td>@pet?.Owner?.FirstName @pet?.Owner?.LastName</td>
+        </tr>
+    </tbody>
+</table>
+
+<form asp-action="Create" method="post" class="form-horizontal" id="add-visit-form">
+    <input asp-for="PetId" type="hidden" />
+    
+    <div class="form-group has-feedback">
+        <div class="form-group">
+            <label asp-for="Date" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+                <input asp-for="Date" type="date" class="form-control" />
+                <span asp-validation-for="Date" class="help-block text-danger"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group has-feedback">
+        <div class="form-group">
+            <label asp-for="Description" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="help-block text-danger"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">Add Visit</button>
+        </div>
+    </div>
+</form>

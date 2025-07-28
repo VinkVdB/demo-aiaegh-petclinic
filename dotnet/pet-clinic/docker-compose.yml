@@ -1,0 +1,20 @@
+services:
+  # .NET PetClinic Application
+  petclinic:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: petclinic:latest
+    pull_policy: never
+    ports:
+      - "5172:5172"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5172
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/petclinic.db
+    volumes:
+      - petclinic_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  petclinic_data:

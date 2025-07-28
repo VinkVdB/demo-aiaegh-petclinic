@@ -1,0 +1,34 @@
+@model IEnumerable<PetClinic.Models.Vet>
+
+@{
+    ViewData["Title"] = "Veterinarians";
+}
+
+<h2>Veterinarians</h2>
+
+<table id="vetsTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialties</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vet in Model)
+        {
+            <tr>
+                <td>@vet.FirstName @vet.LastName</td>
+                <td>
+                    @if (vet.Specialties.Any())
+                    {
+                        @string.Join(", ", vet.Specialties.Select(s => s.Name))
+                    }
+                    else
+                    {
+                        <span>none</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

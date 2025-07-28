@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (localhost:5172)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/PetClinic/bin/Debug/net8.0/PetClinic.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PetClinic",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            },
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": ".NET Core Launch (Debug Mode)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/PetClinic/bin/Debug/net8.0/PetClinic.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PetClinic",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_LOGGING__LOGLEVEL__DEFAULT": "Debug",
+                "ASPNETCORE_LOGGING__LOGLEVEL__MICROSOFT": "Information"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            },
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "Run All Tests",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "test",
+            "program": "dotnet",
+            "args": ["test", "--verbosity", "normal"],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart",
+            "stopAtEntry": false
+        }
+    ]
+}

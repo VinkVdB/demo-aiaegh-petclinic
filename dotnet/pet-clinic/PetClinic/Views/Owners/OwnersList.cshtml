@@ -1,0 +1,110 @@
+@model IEnumerable<PetClinic.Models.Owner>
+
+@{
+    ViewData["Title"] = "Owners";
+}
+
+<h2>Owners</h2>
+
+<table id="ownersTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Telephone</th>
+            <th>Pets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var owner in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details", "Owners", new { id = owner.Id })">@owner.FirstName @owner.LastName</a>
+                </td>
+                <td>@owner.Address</td>
+                <td>@owner.City</td>
+                <td>@owner.Telephone</td>
+                <td>
+                    @foreach (var pet in owner.Pets)
+                    {
+                        <a href="@Url.Action("Details", "Pets", new { id = pet.Id })">@pet.Name</a>
+                        @if (pet != owner.Pets.Last())
+                        {
+                            <text>, </text>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div class="pagination-controls">
+        <span>Pages:</span>
+        <span>[</span>
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            if (ViewBag.CurrentPage != i)
+            {
+                <a href="@Url.Action("Index", "Owners", new { page = i })">@i</a>
+            }
+            else
+            {
+                <span>@i</span>
+            }
+        }
+        <span>]&nbsp;</span>
+        <span>
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <a href="@Url.Action("Index", "Owners", new { page = 1 })" title="First">⏮</a>
+            }
+            else
+            {
+                <span title="First" style="color: #ccc;">⏮</span>
+            }
+        </span>
+        <span>
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <a href="@Url.Action("Index", "Owners", new { page = ViewBag.CurrentPage - 1 })" title="Previous">◀</a>
+            }
+            else
+            {
+                <span title="Previous" style="color: #ccc;">◀</span>
+            }
+        </span>
+        <span>
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <a href="@Url.Action("Index", "Owners", new { page = ViewBag.CurrentPage + 1 })" title="Next">▶</a>
+            }
+            else
+            {
+                <span title="Next" style="color: #ccc;">▶</span>
+            }
+        </span>
+        <span>
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <a href="@Url.Action("Index", "Owners", new { page = ViewBag.TotalPages })" title="Last">⏭</a>
+            }
+            else
+            {
+                <span title="Last" style="color: #ccc;">⏭</span>
+            }
+        </span>
+    </div>
+}
+
+<table class="table-buttons">
+    <tr>
+        <td>
+            <a href="@Url.Action("Create", "Owners")" class="btn btn-primary">Add Owner</a>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PetClinic :: a Spring Framework demonstration</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png" />
+    
+    <!-- Bootstrap 5.3.6 CSS -->
+    <link href="~/css/petclinic.css" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><span></span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-navbar">
+                <ul class="nav navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")" 
+                           href="@Url.Action("Index", "Home")" title="home page">
+                            <span aria-hidden="true">🏠</span>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Owners" ? "active" : "")" 
+                           href="@Url.Action("Find", "Owners")" title="find owners">
+                            <span aria-hidden="true">🔍</span>
+                            <span>Find owners</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Vets" ? "active" : "")" 
+                           href="@Url.Action("Index", "Vets")" title="veterinarians">
+                            <span aria-hidden="true">📋</span>
+                            <span>Veterinarians</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Error", "Home")" title="trigger a RuntimeException to see how it is handled">
+                            <span aria-hidden="true">⚠</span>
+                            <span>Error</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="container xd-container">
+            
+            @* Display flash messages *@
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["message"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <main role="main">
+                @RenderBody()
+            </main>
+
+            <br />
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img src="~/images/spring-logo.svg" alt="VMware Tanzu Logo" class="logo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3.6 JS Bundle -->
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
