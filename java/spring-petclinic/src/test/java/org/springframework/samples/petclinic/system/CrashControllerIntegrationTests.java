@@ -31,6 +31,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -92,6 +94,8 @@ class CrashControllerIntegrationTests {
 
 	@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
 			DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
+	@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+			classes = DatabaseInitializer.class))
 	static class TestConfiguration {
 
 	}
