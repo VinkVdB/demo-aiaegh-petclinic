@@ -47,7 +47,7 @@ sqlite3 petclinic-dev.db
 SELECT * FROM owners;
 ```
 
-## � API Documentation
+## 📋 API Documentation
 
 ### Health Check
 
