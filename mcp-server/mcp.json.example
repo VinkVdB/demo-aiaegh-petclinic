@@ -1,0 +1,30 @@
+{
+  // This file configures MCP servers for VS Code (GitHub Copilot agent mode).
+  //
+  // HOW TO USE:
+  //   Option A (workspace-level): Copy this file to .vscode/mcp.json inside
+  //              your workspace root. VS Code will pick it up automatically.
+  //   Option B (user-level):      Open "MCP: Open User Configuration" from
+  //              the Command Palette and paste the "servers" block below.
+  //
+  // The "stdio" type tells VS Code to launch the server as a subprocess.
+  // VS Code sends MCP messages over stdin and reads responses from stdout.
+  //
+  // Build the image first: docker compose build
+  // (run from labs/project/mcp-server/)
+  "servers": {
+    "joke-server": {
+      "type": "stdio", // Communicates over stdio protocol
+      "command": "docker",
+      "args": [
+        "compose",
+        "run",
+        "--rm",
+        "-T", // Disables pseudo-tty allocation, which can interfere with MCP message parsing
+        "joke-server"
+      ],
+      // Working directory must point to the folder containing docker-compose.yml.
+      "cwd": "${workspaceFolder}/labs/project/mcp-server"
+    }
+  }
+}

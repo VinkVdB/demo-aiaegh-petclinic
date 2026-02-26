@@ -1,0 +1,7 @@
+services:
+  joke-server:
+    build: .
+    # Keep stdin open so the MCP stdio transport can communicate over stdin/stdout.
+    # No port mapping needed — stdio transport requires no network.
+    stdin_open: true
+    tty: false

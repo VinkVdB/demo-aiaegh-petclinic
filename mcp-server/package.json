@@ -1,0 +1,13 @@
+{
+  "name": "mcp-server",
+  "version": "1.0.0",
+  "description": "Minimal MCP server demo for the AIAEGH course",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^4.21.2"
+  }
+}
