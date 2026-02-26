@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "agentStop": [
+      {
+        "type": "command",
+        "bash": "cd \"$(git rev-parse --show-toplevel)/labs/project/dotnet/net-pet-clinic\" && dotnet test 2>&1 | tail -20",
+        "powershell": "Set-Location (Join-Path (git rev-parse --show-toplevel) 'labs/project/dotnet/net-pet-clinic'); dotnet test 2>&1 | Select-Object -Last 20",
+        "timeoutSec": 120
+      }
+    ]
+  }
+}

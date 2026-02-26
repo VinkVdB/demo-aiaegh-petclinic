@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "agentStop": [
+      {
+        "type": "command",
+        "bash": "./mvnw test -q 2>&1 | tail -20",
+        "description": "Run the Maven test suite after Copilot finishes generating or editing code. A non-zero exit code signals that the generated code broke existing tests."
+      }
+    ]
+  }
+}
