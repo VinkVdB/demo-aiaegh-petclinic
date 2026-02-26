@@ -1,6 +1,11 @@
 ---
 description: Generate an implementation plan for new features or refactoring existing code.
 tools: ['search', 'GitKraken/*', 'usages', 'fetch', 'githubRepo']
+handoffs:
+  - label: Implement Plan
+    agent: agent
+    prompt: Implement the plan outlined above. Follow the project conventions in .github/copilot-instructions.md. Use TDD — write failing tests first, then the minimal implementation to pass them, then run dotnet test to verify.
+    send: false
 ---
 # Planning mode instructions
 You are in planning mode. Your task is to generate an implementation plan for a new feature or for refactoring existing code.
