@@ -14,6 +14,10 @@ var mvcBuilder = builder.Services.AddControllersWithViews(options =>
 {
     // Enable automatic antiforgery validation for POST requests
     options.Filters.Add(new Microsoft.AspNetCore.Mvc.AutoValidateAntiforgeryTokenAttribute());
+}).AddJsonOptions(options =>
+{
+    // Prevent circular reference errors when serializing navigation properties (e.g. Vet <-> Specialty)
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
 
 #if DEBUG
